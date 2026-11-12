@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Guess the Song – Fișa elevului (clasa a 8-a)</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap">
+<style>
+:root{color-scheme:dark;--bg:#0d0b1e;--surface:#161230;--surface2:#221b47;--line:rgba(255,255,255,.14);--text:#f4f1ff;--muted:#a8a1cc;--pink:#ff4f93;--violet:#7b61ff;--gold:#ffc857;--aqua:#31e0d0;--ink:#0d0b1e;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){color-scheme:light;--bg:#f6f4ff;--surface:#fff;--surface2:#ece8ff;--line:rgba(30,20,80,.18);--text:#1a1440;--muted:#5a5380}}
+:root[data-theme="light"]{color-scheme:light;--bg:#f6f4ff;--surface:#fff;--surface2:#ece8ff;--line:rgba(30,20,80,.18);--text:#1a1440;--muted:#5a5380}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg)}
+body{font-family:'Outfit','Segoe UI',system-ui,sans-serif;color:var(--text);line-height:1.5;max-width:560px;margin:0 auto;padding-bottom:40px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+header{background:linear-gradient(120deg,var(--pink),var(--violet));color:#fff;padding:26px 18px 22px}
+header h1{font-size:40px;line-height:.95;font-weight:800;letter-spacing:-.03em}
+header p{margin-top:8px;font-weight:600}
+.intro{padding:16px 18px 4px;color:var(--muted);font-size:16px}
+.f{padding:12px 18px}
+label{display:block;font-weight:600;margin-bottom:6px}
+input,select{width:100%;font:inherit;font-size:17px;color:var(--text);background:var(--surface);border:2px solid var(--line);border-radius:12px;padding:12px 14px;min-height:52px}
+input:focus,select:focus{outline:3px solid var(--violet);outline-offset:1px}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding:10px 18px;border-bottom:1px solid var(--line)}
+.bar div{display:flex;justify-content:space-between;font-weight:800;font-size:15px}
+.trk{height:8px;border-radius:4px;background:var(--surface2);margin-top:6px;overflow:hidden}
+.trk i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--pink),var(--violet));transition:width .25s}
+.rh{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:800;margin:26px 18px 10px;--ac:var(--pink)}
+.rh::before{content:"";width:14px;height:14px;border-radius:5px;background:var(--ac)}
+.q{margin:0 18px 12px;background:var(--surface);border:1px solid var(--line);border-left:6px solid var(--ac,var(--pink));border-radius:16px;padding:14px}
+.top{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.nb{min-width:36px;height:36px;border-radius:10px;background:var(--surface2);display:grid;place-items:center;font-weight:800}
+.em{font-size:30px;flex:1;line-height:1.2}
+.tick{display:none;font-weight:800;color:var(--aqua)}
+.q.ok .tick{display:block}.q.ok .nb{background:var(--aqua);color:var(--ink)}
+select{appearance:none;-webkit-appearance:none;padding-right:40px;background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);background-position:calc(100% - 22px) 50%,calc(100% - 16px) 50%;background-size:6px 6px;background-repeat:no-repeat}
+.send{display:block;width:calc(100% - 36px);margin:24px 18px 0;min-height:56px;border:0;border-radius:14px;background:linear-gradient(120deg,var(--pink),var(--violet));color:#fff;font:inherit;font-size:19px;font-weight:800;cursor:pointer}
+.msg{margin:10px 18px 0;color:var(--pink);font-weight:600;min-height:22px}
+#res{display:none;padding:22px 18px}
+#res h2{font-size:30px;font-weight:800;letter-spacing:-.02em}
+.nm{color:var(--muted);font-size:18px;margin-top:2px}
+.sc{margin:18px 0;background:var(--surface2);border-radius:18px;padding:20px;text-align:center}
+.sc b{font-size:60px;line-height:1;font-weight:800;display:block}
+.sc span{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.c{border-radius:12px;padding:8px 0;text-align:center;font-weight:800;border:2px solid var(--line);background:var(--surface)}
+.c.y{border-color:var(--aqua)}.c.n{border-color:var(--pink)}
+.c small{display:block;font-size:13px;font-weight:600;color:var(--muted)}
+.note{margin-top:18px;color:var(--muted)}
+.cp{margin-top:16px;width:100%;min-height:50px;border-radius:12px;border:2px solid var(--line);background:var(--surface);color:var(--text);font:inherit;font-weight:800;font-size:17px;cursor:pointer}
+.bn{margin:0 18px 12px;color:var(--muted);font-size:15px}
+.bet{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.bet span{font-weight:600;margin-right:4px}
+.bt{flex:1;min-height:44px;border-radius:12px;border:2px solid var(--line);background:var(--surface2);color:var(--text);font:inherit;font-weight:800;font-size:16px;cursor:pointer}
+.bt.on{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+</style>
+</head>
+<body>
+<header><h1>Guess<br>the song</h1><p>Clasa a 8-a · Fișa mea de răspunsuri</p></header>
+<div id="form">
+<p class="intro">Ascultă piesele de pe tablă. Pentru fiecare emoji alege din listă piesa pe care o crezi. Poți schimba răspunsurile până apeși „Trimite”.</p>
+<div class="f"><label for="nm">Numele tău sau al echipei</label><input id="nm" type="text" autocomplete="off" maxlength="40"></div>
+<div class="bar"><div><span>Răspunsuri</span><span id="cnt">0 / 19</span></div><div class="trk"><i id="pg"></i></div></div>
+<div id="qs"></div>
+<button class="send" id="send">Trimite răspunsurile</button>
+<p class="msg" id="msg"></p>
+</div>
+<div id="res"></div>
+<script>
+const R=[["🌍", "Hituri internaționale", 1], ["🇷🇴", "Hituri românești", 1], ["🔥", "Mai dificile / de nișă", 2], ["🎁", "Bonus – Pariul", 0]];
+const Q=[[0, "😍🌸✨"], [0, "🌙☀️"], [0, "🇮🇹🍋👨‍🎤"], [0, "🚫✋📺👧"], [1, "🤔❌👥❤️"], [1, "🚫👤🟰😎"], [1, "💍❓👉💕"], [1, "😠💬🔁❤️"], [1, "🍦⭐🎤"], [2, "🌃🌙➡️☀️"], [2, "🪞✨🧠"], [2, "😇🔝🫵"], [2, "🗿🗿🐢"], [2, "1️⃣📻"], [2, "📅📓"], [3, "🤘🖤🎸"], [3, "🕺👑🧤"], [3, "🙏🙏🙏🌙🕺"], [3, "👑🔓🏃💨"]];
+const O=["agenda", "All Night – supernOva & ilyydavid", "Am Uitat Să Mai Fim Oameni – VESCAN", "Beautiful Things – Benson Boone", "Billie Jean – Michael Jackson", "Gimme Gimme Gimme (A Man After Midnight) – ABBA", "Holier Than Thou – Metallica", "I Want to Break Free – Queen", "M-aș certa iar cu tine – Florin Salam", "Midnight Sun – Zara Larsson", "Nimeni Nu-i Ca Mine – ilyydavid", "not allowed – TV Girl", "Nothing Else Matters – Metallica", "One (Radio Edit)", "Reflections – Lucidious", "Salvatore – Lana Del Rey", "TALENT – VANILLA, BERECHET & NADAL", "TIKI TIKI (Slowed)", "Vrei Să Fii A Mea – ilyydavid"];
+const K=[2027533637, 774779218, 3815904511, 1788844650, 3667960142, 3429191695, 3189113064, 2415648827, 2175160824, 1013387282, 1162518776, 1401900041, 535638119, 2802121698, 2654700338, 148682055, 387667588, 3041005326, 4055154391];
+const BI=R.length-1;
+const h=(q,i)=>(Math.imul(i+1,2654435761)^Math.imul(q+7,40503))>>>0;
+const KEY="gts8b-v1";
+let S={name:"",a:{},b:{},done:false};
+const PR=location.hash==="#test";
+if(!PR)try{const x=JSON.parse(localStorage.getItem(KEY));if(x&&x.a)S=x}catch(e){}
+S.b=S.b||{};
+const save=()=>{if(PR)return;try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+const $=id=>document.getElementById(id);
+const AC=["var(--pink)","var(--aqua)","var(--violet)","var(--gold)"];
+const bet=q=>`<div class="bet"><span>Pariez</span>${[1,2,3].map(n=>`<button type="button" class="bt${(S.b[q]||1)===n?" on":""}" data-q="${q}" data-b="${n}">${n} p</button>`).join("")}</div>`;
+let html="",last=-1;
+Q.forEach((x,q)=>{
+ if(x[0]!==last){last=x[0];html+=`<div class="rh" style="--ac:${AC[x[0]]}">${R[x[0]][0]} ${R[x[0]][1]}</div>${x[0]===BI?'<p class="bn">Înainte de fiecare piesă, pariază 1–3 puncte. Dacă ghicești, câștigi punctele pariate. Dacă nu, le pierzi.</p>':""}`}
+ html+=`<div class="q" id="q${q}" style="--ac:${AC[x[0]]}"><div class="top"><div class="nb">${q+1}</div><div class="em">${x[1]}</div><div class="tick">✔</div></div>${x[0]===BI?bet(q):""}<select data-q="${q}" aria-label="Piesa ${q+1}"><option value="">Alege piesa…</option>${O.map((o,i)=>`<option value="${i}">${o}</option>`).join("")}</select></div>`;
+});
+$("qs").innerHTML=html;
+function upd(){
+ const n=Object.keys(S.a).length;
+ $("cnt").textContent=n+" / "+Q.length;
+ $("pg").style.width=(100*n/Q.length)+"%";
+ Q.forEach((x,q)=>$("q"+q).classList.toggle("ok",S.a[q]!==undefined));
+}
+$("qs").addEventListener("change",e=>{
+ const s=e.target;if(!s.dataset.q)return;
+ if(s.value==="")delete S.a[s.dataset.q];else S.a[s.dataset.q]=s.value;
+ upd();save();
+});
+$("qs").addEventListener("click",e=>{const b=e.target.closest("button[data-b]");if(!b)return;S.b[b.dataset.q]=+b.dataset.b;b.parentNode.querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b));save()});
+$("nm").value=S.name;
+if(PR)document.querySelector("header p").textContent+=" · MOD EXERSARE (nu se salvează)";
+$("nm").addEventListener("input",e=>{S.name=e.target.value;save()});
+document.querySelectorAll("select[data-q]").forEach(s=>{if(S.a[s.dataset.q]!==undefined)s.value=S.a[s.dataset.q]});
+upd();
+$("send").addEventListener("click",()=>{
+ if(!S.name.trim()){$("msg").textContent="Scrie numele tău sau al echipei.";$("nm").scrollIntoView({behavior:"smooth",block:"center"});$("nm").focus();return}
+ const miss=Q.length-Object.keys(S.a).length;
+ if(miss&&!confirm("Mai ai "+miss+" întrebări fără răspuns. Trimiți oricum?"))return;
+ S.done=true;save();showRes();
+});
+function showRes(){
+ let ok=0,pts=0,bon=0,cells="",txt="";
+ Q.forEach((x,q)=>{
+  const y=S.a[q]!==undefined&&[].concat(K[q]).includes(h(q,+S.a[q]));
+  let d="";
+  if(x[0]===BI){
+   const b=S.b[q]||1;
+   if(S.a[q]!==undefined){if(y){bon+=b;d=" +"+b}else{bon-=b;d=" −"+b}}
+  }else if(y)pts+=R[x[0]][2];
+  if(y)ok++;
+  cells+=`<div class="c ${y?"y":"n"}">${q+1}<small>${y?"✔":"✘"}${d}</small></div>`;
+  txt+=(q+1)+(y?"✔":"✘")+d+" ";
+ });
+ const tot=Math.max(0,pts+bon);
+ const bs=bon>=0?"+"+bon:"−"+Math.abs(bon);
+ const copy=`${S.name.trim()} – ${tot} puncte (${ok}/${Q.length} corecte, pariu ${bs})\n${txt}`;
+ $("form").style.display="none";
+ const r=$("res");r.style.display="block";
+ r.innerHTML=`<h2>Rezultatul tău</h2><div class="nm"></div><div class="sc"><b>${tot}</b><span>puncte · ${ok} din ${Q.length} piese ghicite · pariu ${bs}</span></div><div class="grid">${cells}</div><p class="note">Arată acest ecran profesorului. Răspunsurile au fost trimise și nu mai pot fi schimbate.</p><button class="cp" id="cp">Copiază rezultatul</button>${PR?'<button class="cp" onclick="location.reload()">Reia exercițiul</button>':""}`;
+ r.querySelector(".nm").textContent=S.name.trim();
+ $("cp").onclick=()=>{try{navigator.clipboard.writeText(copy).then(()=>{$("cp").textContent="Copiat ✔"})}catch(e){}};
+ window.scrollTo(0,0);
+}
+if(S.done)showRes();
+</script>
+</body>
+</html>
